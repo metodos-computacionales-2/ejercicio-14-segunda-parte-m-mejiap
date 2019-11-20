@@ -53,3 +53,7 @@ void rk4(double t, double h, double & y0, double & y1) // metodo de runge kutta 
   y0 = y0 + (1.0/6.0)*(k10 + 2*k20 + 2*k30 + k40);
   y1 = y1 + (1.0/6.0)*(k11 + 2*k21 + 2*k31 + k41);
 }
+
+//Si lambda es igual a 1, entonces tenemos una ecuación diferencial de segundo orden no homogénea. Se obtiene la ecuación de movimiento de un sistema masa - resorte.
+
+//Para este problema, esperamos entonces soluciones periódicas. Tendremos entonces funciones sinusoidales.
