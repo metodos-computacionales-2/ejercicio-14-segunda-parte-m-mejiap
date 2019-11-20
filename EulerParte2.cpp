@@ -7,9 +7,10 @@ const double M = 2;
 const double LAMBDA = 1;
 const double DeltaT = 0.01;
 
-double f0(double t, double y0, double y1); // derivada de y0
-double f1(double t, double y0, double y1); // derivada de y1
-double Euler(double y, double t, double h);
+double f0(double y1); // derivada de y0
+double f1(double y0); // derivada de y1
+double Euler1(double y01, double t, double h);
+double Euler2(double y02, double t, double h);
 
 int main(){
     double y=1;
@@ -20,17 +21,22 @@ int main(){
     cout<<t<<", "<<y<<", "<<v<<endl;
     for(int i=0; i<100; i++){
         t = t + h;
-        double yn1,yn2 = Euler(y,v,t,h);
+        double yn1 = Euler1(y,t,h);
+        double yn2 = Euler2(v,t,h);
         cout<<t<<", "<<yn1<<", "<<yn2<<endl;
     }
     
     return 0;
 }
 
-double Euler(double y01, double y02, double t, double h){
+double Euler1(double y01, double t, double h){
     y01 = y01+(h*f0(y01));
-    y02 = y02+(h*f1(y02))
-    return y01,y02
+    return y01;
+}
+
+double Euler2(double y02, double t, double h){
+    y02 = y02+(h*f1(y02));
+    return y02;
 }
 
 double f0(double y1)
